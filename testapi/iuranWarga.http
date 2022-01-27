@@ -1,0 +1,35 @@
+POST http://localhost:3000/api/v1/iuranWargas HTTP/1.1
+Content-Type: application/json
+
+{
+  "date": "22 November 2011",
+  "amount": 40000,
+  "description": "+639171234567",
+  "warga_id": 1,
+  "iuran_id": 1
+}
+
+###
+
+GET http://localhost:3000/api/v1/iuranWargas/1 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+###
+GET http://localhost:3000/api/v1/iuranWargas HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+###
+PUT http://localhost:3000/api/v1/iuranWargas/3 HTTP/1.1
+Content-Type: application/json
+
+{
+  "date": "22 D 2012",
+  "amount": 20000,
+  "description": "+639171234567"
+}
+
+###
+DELETE http://localhost:3000/api/v1/iuranWargas/3 HTTP/1.1
+Content-Type: application/json

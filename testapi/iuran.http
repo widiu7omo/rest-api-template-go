@@ -1,0 +1,19 @@
+POST http://localhost:3000/api/v1/iurans HTTP/1.1
+Content-Type: application/json
+
+{
+  "name": "Pembayaran Iuran Bulan November",
+  "description": "Pembayaran untuk iuran bulanan",
+  "min_amount": 20000
+}
+
+###
+
+GET http://localhost:3000/api/v1/iurans/4 HTTP/1.1
+Content-Type: application/json
+Accept: application/json
+
+###
+GET http://localhost:3000/api/v1/iurans HTTP/1.1
+Content-Type: application/json
+Accept: application/json
