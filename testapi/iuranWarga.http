@@ -1,4 +1,4 @@
-POST http://localhost:3000/api/v1/iuranWargas HTTP/1.1
+POST {{host}}/iuranWargas HTTP/1.1
 Content-Type: application/json
 
 {
@@ -10,18 +10,17 @@ Content-Type: application/json
 }
 
 ###
-
-GET http://localhost:3000/api/v1/iuranWargas/1 HTTP/1.1
+GET {{host}}/iuranWargas/1 HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 ###
-GET http://localhost:3000/api/v1/iuranWargas HTTP/1.1
+GET {{host}}/iuranWargas HTTP/1.1
 Content-Type: application/json
 Accept: application/json
 
 ###
-PUT http://localhost:3000/api/v1/iuranWargas/3 HTTP/1.1
+PUT {{host}}/iuranWargas/3 HTTP/1.1
 Content-Type: application/json
 
 {
@@ -31,5 +30,5 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:3000/api/v1/iuranWargas/3 HTTP/1.1
+DELETE {{host}}/iuranWargas/3 HTTP/1.1
 Content-Type: application/json

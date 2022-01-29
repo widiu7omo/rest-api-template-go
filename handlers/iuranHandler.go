@@ -9,6 +9,11 @@ import (
 )
 
 func IuranList(c *fiber.Ctx) error {
+	fmt.Println(c.Query("with"))
+	if c.Query("with") == "total" {
+		iurans, err := repositories.IuranWithTotal()
+		return Response(c, iurans, err)
+	}
 	iurans, err := repositories.IuranGet()
 	return Response(c, iurans, err)
 }

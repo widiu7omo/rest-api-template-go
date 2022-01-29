@@ -10,13 +10,13 @@ func Response(c *fiber.Ctx, data interface{}, err error) error {
 	if err != nil {
 		return c.Status(400).JSON(fiber.Map{
 			"success": false,
-			"error":   err.Error(),
+			"message": err.Error(),
 			"data":    nil,
 		})
 	}
 	return c.JSON(fiber.Map{
 		"success": true,
-		"error":   nil,
-		"data":    &data,
+		"message": "Retrieve Successfully",
+		"data":    data,
 	})
 }
