@@ -7,17 +7,13 @@ import (
 	"gorm.io/gorm"
 )
 
-//const dbUrl = "u6945793_erte5:JbAADXqobwWQ@tcp(127.0.0.1:3306)/u6945793_erte5?charset=utf8mb4"
-//
-const dbUrl = "root:@tcp(127.0.0.1:3306)/posrt5?charset=utf8mb4"
-
 var (
 	mysqlDb  *gorm.DB
 	mysqlErr error
 )
 
 // Connect with database
-func Connect() {
+func Connect(dbUrl string) {
 	mysqlDb, mysqlErr = gorm.Open(mysql.Open(dbUrl), &gorm.Config{})
 	if mysqlErr != nil {
 		fmt.Println("Failed to reach Database")
