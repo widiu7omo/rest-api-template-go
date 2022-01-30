@@ -31,8 +31,8 @@ func {{.Model}}Create(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		createErr := repositories.{{.Model}}Create({{.Data}})
-		if createErr != nil {
+		{{.Data}},err = repositories.{{.Model}}Create({{.Data}})
+		if err != nil {
 			return Response(c, nil, createErr)
 		}
 		return Response(c, {{.Data}}, nil)
@@ -49,8 +49,8 @@ func {{.Model}}Update(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		updateErr := repositories.{{.Model}}Update({{.Data}})
-		if updateErr != nil {
+		{{.Data}},err = repositories.{{.Model}}Update({{.Data}})
+		if err != nil {
 			return Response(c, nil, updateErr)
 		}
 		return Response(c, {{.Data}}, nil)

@@ -14,12 +14,13 @@ func {{.Model}}GetById(id string) (models.{{.Model}}, error) {
 	err := db.Where("id = ?", id).First(&{{.Data}}).Error
 	return {{.Data}}, err
 }
-func {{.Model}}Create({{.Data}} models.{{.Model}}) error {
-	result := db.Create(&{{.Data}})
-	return result.Error
+func {{.Model}}Create({{.Data}} models.{{.Model}}) (models.{{.Model}},error) {
+	err := db.Create(&{{.Data}}).Error
+	return {{.Data}}, err
 }
-func {{.Model}}Update({{.Data}} models.{{.Model}}) error {
-	return db.Save(&{{.Data}}).Error
+func {{.Model}}Update({{.Data}} models.{{.Model}}) (models.{{.Model}},error) {
+	err := db.Save(&{{.Data}}).Error
+	return {{.Data}}, err
 }
 func {{.Model}}Delete({{.Data}} models.{{.Model}}) error {
 	return db.Delete(&{{.Data}}).Error
