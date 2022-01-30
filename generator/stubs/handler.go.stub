@@ -9,6 +9,12 @@ import (
 )
 
 func {{.Model}}List(c *fiber.Ctx) error {
+	if c.Query("page") != "" {
+		page := c.Query("page", "1")
+		page_size := c.Query("page_size", "10")
+		{{.Data}}s, err := repositories.{{.Model}}GetPagination(page, page_size)
+		return Response(c, {{.Data}}s, err)
+	}
 	{{.Data}}s, err := repositories.{{.Model}}Get()
 	if err != nil {
 		return Response(c, nil, err)

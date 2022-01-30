@@ -3,7 +3,11 @@ package repositories
 import (
 	"boilerplate/models"
 )
-
+func {{.Model}}GetPagination(page string, pageSize string) ([]models.{{.Model}}, error) {
+	var {{.Data}}s []models.{{.Model}}
+	err := db.Scopes(helpers.Paginate(page, pageSize)).Find(&{{.Data}}s).Error
+	return {{.Data}}s, err
+}
 func {{.Model}}Get() ([]models.{{.Model}}, error) {
 	var {{.Data}}s []models.{{.Model}}
 	err := db.Find(&{{.Data}}s).Error
