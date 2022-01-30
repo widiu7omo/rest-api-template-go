@@ -31,9 +31,9 @@ func IuranWargaCreate(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		createErr := repositores.IuranWargaCreate(iuranWarga)
-		if createErr != nil {
-			return Response(c, nil, createErr)
+		iuranWarga, err = repositores.IuranWargaCreate(iuranWarga)
+		if err != nil {
+			return Response(c, nil, err)
 		}
 		return Response(c, iuranWarga, nil)
 	}
@@ -49,9 +49,9 @@ func IuranWargaUpdate(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		updateErr := repositores.IuranWargaUpdate(iuranWarga)
-		if updateErr != nil {
-			return Response(c, nil, updateErr)
+		iuranWarga, err = repositores.IuranWargaUpdate(iuranWarga)
+		if err != nil {
+			return Response(c, nil, err)
 		}
 		return Response(c, iuranWarga, nil)
 	}
@@ -67,7 +67,7 @@ func IuranWargaDelete(c *fiber.Ctx) error {
 		if deleteErr != nil {
 			return Response(c, nil, deleteErr)
 		}
-		return Response(c, "Successfully Deleted", nil)
+		return Response(c, iuranWarga, nil)
 	}
 	return Response(c, nil, fmt.Errorf("invalid ID Param not found"))
 

@@ -7,9 +7,9 @@ import (
 	"gorm.io/gorm"
 )
 
-const dbUrl = "u6945793_erte5:JbAADXqobwWQ@tcp(127.0.0.1:3306)/u6945793_erte5?charset=utf8mb4"
-
-//const dbUrl = "root:@tcp(127.0.0.1:3306)/posrt5?charset=utf8mb4"
+//const dbUrl = "u6945793_erte5:JbAADXqobwWQ@tcp(127.0.0.1:3306)/u6945793_erte5?charset=utf8mb4"
+//
+const dbUrl = "root:@tcp(127.0.0.1:3306)/posrt5?charset=utf8mb4"
 
 var (
 	mysqlDb  *gorm.DB

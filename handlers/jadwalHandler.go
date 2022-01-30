@@ -9,6 +9,12 @@ import (
 )
 
 func JadwalList(c *fiber.Ctx) error {
+	if c.Query("page") != "" {
+		page := c.Query("page", "1")
+		page_size := c.Query("page_size", "10")
+		jadwals, err := repositories.JadwalGetPagination(page, page_size)
+		return Response(c, jadwals, err)
+	}
 	jadwals, err := repositories.JadwalGet()
 	if err != nil {
 		return Response(c, nil, err)
@@ -31,9 +37,9 @@ func JadwalCreate(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		createErr := repositories.JadwalCreate(jadwal)
-		if createErr != nil {
-			return Response(c, nil, createErr)
+		jadwal, err = repositories.JadwalCreate(jadwal)
+		if err != nil {
+			return Response(c, nil, err)
 		}
 		return Response(c, jadwal, nil)
 	}
@@ -49,9 +55,9 @@ func JadwalUpdate(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		updateErr := repositories.JadwalUpdate(jadwal)
-		if updateErr != nil {
-			return Response(c, nil, updateErr)
+		jadwal, err = repositories.JadwalUpdate(jadwal)
+		if err != nil {
+			return Response(c, nil, err)
 		}
 		return Response(c, jadwal, nil)
 	}
@@ -67,7 +73,7 @@ func JadwalDelete(c *fiber.Ctx) error {
 		if deleteErr != nil {
 			return Response(c, nil, deleteErr)
 		}
-		return Response(c, "Successfully Deleted", nil)
+		return Response(c, jadwal, nil)
 	}
 	return Response(c, nil, fmt.Errorf("invalid ID Param not found"))
 

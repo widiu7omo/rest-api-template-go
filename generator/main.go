@@ -43,20 +43,20 @@ func (s *StubDetails) CreateStub() bool {
 	return err == nil
 }
 func main() {
-	var modelName = "jadwal"
-	stubModel := StubDetails{
-		Name:        "./stubs/model.go.stub",
-		FileName:    modelName + ".go",
-		Destination: "../models/",
-		Values: map[string]interface{}{
-			"Model": strings.Title(modelName),
-			"Fields": []map[string]string{
-				{"Name": "ID", "Type": "int", "Json": "id"},
-				{"Name": "Name", "Type": "string", "Json": "name"},
-				{"Name": "Day", "Type": "string", "Json": "day"},
-			},
-		},
-	}
+	var modelName = "user"
+	//stubModel := StubDetails{
+	//	Name:        "./stubs/model.go.stub",
+	//	FileName:    modelName + ".go",
+	//	Destination: "../models/",
+	//	Values: map[string]interface{}{
+	//		"Model": strings.Title(modelName),
+	//		"Fields": []map[string]string{
+	//			{"Name": "ID", "Type": "int", "Json": "id"},
+	//			{"Name": "Name", "Type": "string", "Json": "name"},
+	//			{"Name": "Day", "Type": "string", "Json": "day"},
+	//		},
+	//	},
+	//}
 	stubHandler := StubDetails{
 		Name:        "./stubs/handler.go.stub",
 		FileName:    modelName + "Handler.go",
@@ -75,8 +75,12 @@ func main() {
 			"Data":  modelName,
 		},
 	}
-	statusMode, statusHandler, statusRepository := stubModel.CreateStub(), stubHandler.CreateStub(), stubRepository.CreateStub()
-	if statusMode && statusHandler && statusRepository {
+	//statusMode, statusHandler, statusRepository := stubModel.CreateStub(), stubHandler.CreateStub(), stubRepository.CreateStub()
+	//if statusMode && statusHandler && statusRepository {
+	//	fmt.Println("Success Create Model, Handler, Repository for " + modelName + " ")
+	//}
+	statusHandler, statusRepository := stubHandler.CreateStub(), stubRepository.CreateStub()
+	if statusHandler && statusRepository {
 		fmt.Println("Success Create Model, Handler, Repository for " + modelName + " ")
 	}
 }
