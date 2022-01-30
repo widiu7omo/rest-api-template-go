@@ -24,6 +24,7 @@ func ApiRouter(app *fiber.App) {
 	// Warga handlers
 	v1.Get("/wargas", handlers.WargaList)
 	v1.Get("/wargasWithIuran", handlers.WargaListWithIuranWargas)
+	v1.Get("/wargasWithIuran/:iuranId/:wargaId", handlers.WargaWithIuranWargaGetById)
 	v1.Get("/wargas/:id", handlers.WargaGetById)
 	v1.Post("/wargas", handlers.WargaCreate)
 	v1.Put("/wargas/:id", handlers.WargaUpdate)

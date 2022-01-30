@@ -31,11 +31,11 @@ func IuranWargaCreate(c *fiber.Ctx) error {
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		iuranWarga, err = repositores.IuranWargaCreate(iuranWarga)
+		wargaWithIuran, err := repositores.IuranWargaCreate(iuranWarga)
 		if err != nil {
 			return Response(c, nil, err)
 		}
-		return Response(c, iuranWarga, nil)
+		return Response(c, wargaWithIuran, nil)
 	}
 	return Response(c, nil, fmt.Errorf("invalid Content-Type"))
 }

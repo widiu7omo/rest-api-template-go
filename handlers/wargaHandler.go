@@ -35,6 +35,15 @@ func WargaListWithIuranWargas(c *fiber.Ctx) error {
 	}
 	return Response(c, wargas, nil)
 }
+func WargaWithIuranWargaGetById(c *fiber.Ctx) error {
+	fmt.Println(c.Params("iuranId"))
+	fmt.Println(c.Params("wargaId"))
+	warga, err := repositories.WargaWithIuranWargaGetById(c.Params("iuranId"), c.Params("wargaId"))
+	if err != nil {
+		return Response(c, nil, err)
+	}
+	return Response(c, warga, nil)
+}
 func WargaGetById(c *fiber.Ctx) error {
 	fmt.Println(c.Params("id"))
 	warga, err := repositories.WargaGetById(c.Params("id"))

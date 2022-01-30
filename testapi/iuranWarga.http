@@ -3,10 +3,10 @@ Content-Type: application/json
 
 {
   "date": "22 November 2011",
-  "amount": 40000,
+  "amount": 40003,
   "description": "+639171234567",
-  "warga_id": 1,
-  "iuran_id": 1
+  "warga_id": 3,
+  "iuran_id": 2
 }
 
 ###
