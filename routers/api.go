@@ -23,6 +23,7 @@ func ApiRouter(app *fiber.App) {
 	v1.Delete("/iurans/:id", handlers.IuranDelete)
 	// Warga handlers
 	v1.Get("/wargas", handlers.WargaList)
+	v1.Get("/wargasWithIuran", handlers.WargaListWithIuranWargas)
 	v1.Get("/wargas/:id", handlers.WargaGetById)
 	v1.Post("/wargas", handlers.WargaCreate)
 	v1.Put("/wargas/:id", handlers.WargaUpdate)

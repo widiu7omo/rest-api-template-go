@@ -2,7 +2,7 @@ package handlers
 
 import (
 	"boilerplate/models"
-	repositories "boilerplate/repositories"
+	"boilerplate/repositories"
 	"encoding/json"
 	"fmt"
 	"github.com/gofiber/fiber/v2"
@@ -13,6 +13,20 @@ func WargaList(c *fiber.Ctx) error {
 		page := c.Query("page", "1")
 		page_size := c.Query("page_size", "10")
 		wargas, err := repositories.WargaGetPagination(page, page_size)
+		return Response(c, wargas, err)
+	}
+	wargas, err := repositories.WargaGet()
+	if err != nil {
+		return Response(c, nil, err)
+	}
+	return Response(c, wargas, nil)
+}
+func WargaListWithIuranWargas(c *fiber.Ctx) error {
+	if c.Query("page") != "" {
+		page := c.Query("page", "1")
+		page_size := c.Query("page_size", "10")
+		iuranId := c.Query("iuran_id", "")
+		wargas, err := repositories.WargaWithIuranWargaGetPagination(page, page_size, iuranId)
 		return Response(c, wargas, err)
 	}
 	wargas, err := repositories.WargaGet()

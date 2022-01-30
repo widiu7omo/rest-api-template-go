@@ -7,12 +7,17 @@ import (
 
 func WargaGetPagination(page string, pageSize string) ([]models.Warga, error) {
 	var wargas []models.Warga
-	err := db.Scopes(helpers.Paginate(page, pageSize)).Find(&wargas).Error
+	err := db.Preload("IuranWargas").Scopes(helpers.Paginate(page, pageSize)).Find(&wargas).Error
+	return wargas, err
+}
+func WargaWithIuranWargaGetPagination(page string, pageSize string, iuranId string) ([]models.WargaWithIuran, error) {
+	var wargas []models.WargaWithIuran
+	err := db.Table("wargas").Select("wargas.*,(select amount from iuran_wargas iw where iw.warga_id = wargas.id and iuran_id = ?) as amount,(select date from iuran_wargas iw where iw.warga_id = wargas.id and iuran_id = ?) as date", iuranId, iuranId).Scopes(helpers.Paginate(page, pageSize)).Find(&wargas).Error
 	return wargas, err
 }
 func WargaGet() ([]models.Warga, error) {
 	var wargas []models.Warga
-	err := db.Find(&wargas).Error
+	err := db.Preload("IuranWargas").Find(&wargas).Error
 	return wargas, err
 }
 func WargaGetById(id string) (models.Warga, error) {

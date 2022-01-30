@@ -11,7 +11,7 @@ func IuranWithTotal() ([]models.IuranWithTotal, error) {
 }
 func IuranGet() ([]models.Iuran, error) {
 	var iurans []models.Iuran
-	err := db.Find(&iurans).Error
+	err := db.Preload("IuranWargas.Warga").Find(&iurans).Error
 	return iurans, err
 }
 func IuranGetById(id string) (models.Iuran, error) {
