@@ -33,7 +33,7 @@ func {{.Model}}Create(c *fiber.Ctx) error {
 		}
 		{{.Data}},err = repositories.{{.Model}}Create({{.Data}})
 		if err != nil {
-			return Response(c, nil, createErr)
+			return Response(c, nil, err)
 		}
 		return Response(c, {{.Data}}, nil)
 	}
@@ -51,7 +51,7 @@ func {{.Model}}Update(c *fiber.Ctx) error {
 		}
 		{{.Data}},err = repositories.{{.Model}}Update({{.Data}})
 		if err != nil {
-			return Response(c, nil, updateErr)
+			return Response(c, nil, err)
 		}
 		return Response(c, {{.Data}}, nil)
 	}
@@ -67,7 +67,7 @@ func {{.Model}}Delete(c *fiber.Ctx) error {
 		if deleteErr != nil {
 			return Response(c, nil, deleteErr)
 		}
-		return Response(c, "Successfully Deleted", nil)
+		return Response(c, {{.Data}}, nil)
 	}
 	return Response(c, nil, fmt.Errorf("invalid ID Param not found"))
 
