@@ -6,7 +6,7 @@ require (
 	github.com/gofiber/fiber/v2 v2.24.0
 	golang.org/x/sys v0.0.0-20220114195835-da31bd327af9 // indirect
 	gorm.io/driver/mysql v1.2.3
-	gorm.io/gorm v1.22.5
+	gorm.io/gorm v1.23.2
 )
 
 require (
